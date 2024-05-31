@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::resource('contacts', ContactController::class);
+
+Route::post('/contacts/store-duplicate', [ContactController::class, 'storeDuplicate'])->name('contacts.store.duplicate');

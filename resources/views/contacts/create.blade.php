@@ -12,58 +12,75 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('contacts.store') }}">
+        <form id="duplicate-contact-form" method="POST" action="{{ route('contacts.store') }}">
             @csrf
+
+            <input type="hidden" name="nom" value="{{ old('nom') }}">
+            <input type="hidden" name="prenom" value="{{ old('prenom') }}">
+            <!-- Ajoutez les autres champs nécessaires ici -->
+            <input type="hidden" name="company[nom]" value="{{ old('company.nom') }}">
+            <input type="hidden" name="company[code_postal]" value="{{ old('company.code_postal') }}">
+            <input type="hidden" name="company[adresse]" value="{{ old('company.adresse') }}">
+            <input type="hidden" name="company[ville]" value="{{ old('company.ville') }}">
+            <input type="hidden" name="company[statut]" value="{{ old('company.statut') }}">
 
             <div class="flex space-x-4 mb-2">
                 <div class="flex flex-col w-1/2">
                     <label for="prenom" class="text-gray-700 mb-2">Prénom</label>
                     <input type="text" id="prenom" name="prenom"
-                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
 
                 <div class="flex flex-col w-1/2">
                     <label for="nom" class="text-gray-700 mb-2">Nom</label>
                     <input type="text" id="nom" name="nom"
-                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
             </div>
 
             <div class="flex flex-col mb-2">
                 <label for="email" class="text-gray-700 mb-2">E-mail</label>
                 <input type="email" id="email" name="e_mail"
-                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
             </div>
 
             <div class="flex flex-col mb-2">
                 <label for="entreprise" class="text-gray-700 mb-2">Entreprise</label>
                 <input type="text" id="entreprise" name="company[nom]"
-                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
             </div>
 
             <div class="flex flex-col mb-2">
                 <label for="adresse" class="text-gray-700 mb-2">Adresse</label>
                 <input type="text" id="adresse" name="company[adresse]"
-                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
             </div>
 
             <div class="flex space-x-4 mb-2">
                 <div class="flex flex-col w-1/2">
                     <label for="code_postal" class="text-gray-700 mb-2">Code postal</label>
                     <input type="text" id="code_postal" name="company[code_postal]"
-                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
                 <div class="flex flex-col w-1/2">
                     <label for="ville" class="text-gray-700 mb-2">Ville</label>
                     <input type="text" id="ville" name="company[ville]"
-                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
             </div>
 
             <div class="flex flex-col mb-2">
                 <label for="status" class="text-gray-700 mb-2">Status</label>
                 <input type="text" id="status" name="company[statut]"
-                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
             </div>
 
             <div class="bg-green-100 flex justify-end p-2 -mx-16 -mb-4">
@@ -76,22 +93,3 @@
         </form>
     </div>
 </div>
-
-<style>
-    .form-input {
-        height: 24px;
-        /* Adjust the height as necessary */
-        line-height: 24px;
-        /* Ensure the text is vertically centered */
-        font-family: 'Arial', sans-serif;
-        /* Example sans-serif font */
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 16px;
-    }
-</style>

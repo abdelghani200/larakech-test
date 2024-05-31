@@ -36,8 +36,8 @@
         </div>
 
         <div class="flex flex-col mb-2">
-            <label for="telephone_fixe" class="text-gray-700 mb-2">Entreprise</label>
-            <input type="text" id="telephone_fixe" name="telephone_fixe" value="{{ $contact->telephone_fixe }}"
+            <label for="company_adresse" class="text-gray-700 mb-2">Entreprise</label>
+            <input type="text" id="company_adresse" name="company_nom" value="{{ $contact->company->nom }}"
                 class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 readonly>
         </div>

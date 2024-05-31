@@ -84,3 +84,38 @@ $(document).ready(function () {
         confirmDelete(1);
     });
 });
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (duplicateContactError) {
+        Swal.fire({
+            title: '<i class="fa fa-exclamation-triangle text-red-600"></i> Doublon',
+            html: '<p>' + duplicateContactMessage + '</p>',
+            showCancelButton: false,
+            showConfirmButton: false,
+            footer: '<div class="bg-green-100 flex justify-end p-2 -mx-4 -mb-6 space-x-2">' +
+                '<button id="confirm-button" class="border border-gray-300 rounded-md bg-red-400 text-white py-2 px-4">Confirmer</button>' +
+                '</div>',
+            customClass: {
+                title: 'flex',
+            }
+        });
+
+        document.getElementById('confirm-button').addEventListener('click', function () {
+            const form = document.getElementById('duplicate-contact-form');
+            if (form) {
+                form.submit();
+            } else {
+                console.error('Formulaire introuvable');
+            }
+        });
+    }
+});

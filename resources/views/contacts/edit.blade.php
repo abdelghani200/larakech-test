@@ -32,7 +32,7 @@
 
             <div class="flex flex-col mb-2">
                 <label for="email" class="text-gray-700 mb-2">E-mail</label>
-                <input type="email" id="email" name="email" value="{{ $contact->e_mail }}"
+                <input type="email" id="email" name="e_mail" value="{{ $contact->e_mail }}"
                     class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
@@ -51,12 +51,14 @@
             <div class="flex space-x-4 mb-2">
                 <div class="flex flex-col w-1/2">
                     <label for="code_postal" class="text-gray-700 mb-2">Code postal</label>
-                    <input type="text" id="code_postal" name="company[code_postal]" value="{{ $contact->company->code_postal }}"
+                    <input type="text" id="code_postal" name="company[code_postal]"
+                        value="{{ $contact->company->code_postal }}"
                         class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <div class="flex flex-col w-1/2">
                     <label for="ville" class="text-gray-700 mb-2">Ville</label>
-                    <input type="text" id="ville" name="company[ville]" value="{{ old('company.ville', $contact->company->ville) }}"
+                    <input type="text" id="ville" name="company[ville]"
+                        value="{{ old('company.ville', $contact->company->ville) }}"
                         class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
             </div>
@@ -82,22 +84,3 @@
         </form>
     </div>
 </div>
-
-<style>
-    .form-input {
-        height: 24px;
-        /* Adjust the height as necessary */
-        line-height: 24px;
-        /* Ensure the text is vertically centered */
-        font-family: 'Arial', sans-serif;
-        /* Example sans-serif font */
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 16px;
-    }
-</style>
