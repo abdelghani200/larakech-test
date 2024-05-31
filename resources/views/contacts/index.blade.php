@@ -27,6 +27,14 @@
         button {
             font-size: 16px;
         }
+
+        .swal2-title.custom-title {
+            display: flex;
+        }
+
+        .swal2-title.custom-title span {
+            margin-right: 291px;
+        }
     </style>
 </head>
 
@@ -47,6 +55,10 @@
             </div>
 
         </div>
+
+        @include('delete')
+        @include('confirmDuplicate')
+
 
         <script>
             var duplicateContactError = @json($errors->has('duplicate_contact'));
@@ -84,12 +96,13 @@
                             <td class="py-2 px-4">{{ $contact->nom }} {{ $contact->prenom }}</td>
                             <td class="py-2 px-4">{{ $contact->company->nom }}</td>
                             <td class="py-2 px-4">
-                                <span class="inline-block py-1 px-3 rounded-full
-                                                                                                    @if($contact->company->statut == 'Lead') bg-blue-200 
-                                                                                                    @elseif($contact->company->statut == 'Client') bg-green-200
-                                                                                                    @elseif($contact->company->statut == 'Prospect') bg-red-200 
-                                                                                                    @endif
-                                                                                                    rounded">
+                                <span
+                                    class="inline-block py-1 px-3 rounded-full
+                                                                                                                    @if($contact->company->statut == 'Lead') bg-blue-200 
+                                                                                                                    @elseif($contact->company->statut == 'Client') bg-green-200
+                                                                                                                    @elseif($contact->company->statut == 'Prospect') bg-red-200 
+                                                                                                                    @endif
+                                                                                                                    rounded">
                                     {{ $contact->company->statut }}
                                 </span>
                             </td>

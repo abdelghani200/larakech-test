@@ -17,7 +17,6 @@
 
             <input type="hidden" name="nom" value="{{ old('nom') }}">
             <input type="hidden" name="prenom" value="{{ old('prenom') }}">
-            <!-- Ajoutez les autres champs nécessaires ici -->
             <input type="hidden" name="company[nom]" value="{{ old('company.nom') }}">
             <input type="hidden" name="company[code_postal]" value="{{ old('company.code_postal') }}">
             <input type="hidden" name="company[adresse]" value="{{ old('company.adresse') }}">
