@@ -56,26 +56,25 @@ function closeModal() {
     $('#show-modal').addClass('hidden');
 }
 
-function confirmDelete(contactId) {
-    Swal.fire({
-        title: '<i class="fa fa-exclamation-triangle text-red-600"></i> Supprimer le contact',
-        html: '<p>Etes-vous sûr de vouloir supprimer le contact ?<br>Cette opération est irréversible.</p>',
-        showCancelButton: false,
-        showConfirmButton: false,
-        footer: '<div class="bg-green-100 flex justify-end p-2 -mx-4 -mb-6 space-x-2">' +
-            '<button id="cancel-button" class="border border-gray-300 rounded-md bg-white-500 text-black py-2 px-4" onclick="closeModalEdit()">Annuler</button>' +
-            '<button id="confirm-button" class="border border-gray-300 rounded-md bg-red-400 text-white py-2 px-4" style="margin-right:67px;">Confirmer</button>' +
-            '</div>',
-        customClass: {
-            title: 'flex',
-        }
 
-    });
+
+function closeModalDouble() {
+    $('#cancel-button').addClass('hidden');
+}
+
+
+
+function confirmDelete(contactId) {
+    document.getElementById('delete-modal').classList.remove('hidden');
+    document.getElementById('delete-modal').classList.add('visible');
+
     document.getElementById('confirm-button').addEventListener('click', function () {
         document.getElementById('delete-form-' + contactId).submit();
     });
+
     document.getElementById('cancel-button').addEventListener('click', function () {
-        Swal.close();
+        document.getElementById('delete-modal').classList.remove('visible');
+        document.getElementById('delete-modal').classList.add('hidden');
     });
 }
 
@@ -91,25 +90,11 @@ $(document).ready(function () {
 
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     if (duplicateContactError) {
-        Swal.fire({
-            title: '<i class="fa fa-exclamation-triangle text-red-600"></i> Doublon',
-            html: '<p>' + duplicateContactMessage + '</p>',
-            showCancelButton: false,
-            showConfirmButton: false,
-            footer: '<div class="bg-green-100 flex justify-end p-2 -mx-4 -mb-6 space-x-2">' +
-                '<button id="confirm-button" class="border border-gray-300 rounded-md bg-red-400 text-white py-2 px-4">Confirmer</button>' +
-                '</div>',
-            customClass: {
-                title: 'flex',
-            }
-        });
+        document.getElementById('confirm-duplicate-modal').classList.remove('hidden');
 
-        document.getElementById('confirm-button').addEventListener('click', function () {
+        document.getElementById('duplicate-confirm-button').addEventListener('click', function () {
             const form = document.getElementById('duplicate-contact-form');
             if (form) {
                 form.submit();
@@ -117,5 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Formulaire introuvable');
             }
         });
+
+        document.getElementById('duplicate-cancel-button').addEventListener('click', function () {
+            document.getElementById('confirm-duplicate-modal').classList.add('hidden');
+        });
     }
 });
+
